@@ -95,6 +95,12 @@ export interface GrantApplicationUpdate {
      * @memberof GrantApplicationUpdate
      */
     'milestones'?: Array<GrantProposedMilestone>;
+    /**
+     * 
+     * @type {string}
+     * @memberof GrantApplicationUpdate
+     */
+    'feedback'?: string;
 }
 /**
  * 
