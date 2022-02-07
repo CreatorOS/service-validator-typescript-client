@@ -1,14 +1,14 @@
 {
-  "name": "@creatoros/service-validator-client",
+  "name": "@questbook/service-validator-client",
   "version": "0.1.0",
-  "description": "OpenAPI client for @creatoros/service-validator-client",
+  "description": "OpenAPI client for @questbook/service-validator-client",
   "author": "OpenAPI-Generator Contributors",
   "keywords": [
     "axios",
     "typescript",
     "openapi-client",
     "openapi-generator",
-    "@creatoros/service-validator-client"
+    "@questbook/service-validator-client"
   ],
   "license": "Unlicense",
   "main": "./dist/index.js",
