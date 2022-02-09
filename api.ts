@@ -22,6 +22,45 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from './base';
 
 /**
+ * Maps ID of the field to the answer by the applicant
+ * @export
+ * @interface GrantApplicationFieldAnswers
+ */
+export interface GrantApplicationFieldAnswers {
+    [key: string]: string | any;
+
+    /**
+     * 
+     * @type {string}
+     * @memberof GrantApplicationFieldAnswers
+     */
+    'applicantName': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GrantApplicationFieldAnswers
+     */
+    'applicantEmail': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GrantApplicationFieldAnswers
+     */
+    'projectName': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GrantApplicationFieldAnswers
+     */
+    'projectDetails': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GrantApplicationFieldAnswers
+     */
+    'fundingBreakdown': string;
+}
+/**
  * 
  * @export
  * @interface GrantApplicationRequest
@@ -41,16 +80,10 @@ export interface GrantApplicationRequest {
     'applicantId': string;
     /**
      * 
-     * @type {string}
+     * @type {GrantApplicationFieldAnswers}
      * @memberof GrantApplicationRequest
      */
-    'details': string;
-    /**
-     * 
-     * @type {Array<GrantFieldAnswer>}
-     * @memberof GrantApplicationRequest
-     */
-    'fields': Array<GrantFieldAnswer>;
+    'fields': GrantApplicationFieldAnswers;
     /**
      * 
      * @type {Array<GrantApplicationRequestMembers>}
@@ -216,25 +249,6 @@ export const GrantFieldInputTypeEnum = {
 
 export type GrantFieldInputTypeEnum = typeof GrantFieldInputTypeEnum[keyof typeof GrantFieldInputTypeEnum];
 
-/**
- * 
- * @export
- * @interface GrantFieldAnswer
- */
-export interface GrantFieldAnswer {
-    /**
-     * 
-     * @type {string}
-     * @memberof GrantFieldAnswer
-     */
-    'id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GrantFieldAnswer
-     */
-    'value': string;
-}
 /**
  * 
  * @export
