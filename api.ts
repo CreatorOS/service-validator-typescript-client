@@ -203,7 +203,7 @@ export interface GrantCreateRequestReward {
      */
     'committed': number;
     /**
-     * ID of the network
+     * 
      * @type {string}
      * @memberof GrantCreateRequestReward
      */
@@ -363,6 +363,22 @@ export interface SocialItem {
     'value': string;
 }
 /**
+ * Chain ID of the network
+ * @export
+ * @enum {string}
+ */
+
+export const SupportedNetwork = {
+    _1: '1',
+    _4: '4',
+    _137: '137',
+    _80001: '80001'
+} as const;
+
+export type SupportedNetwork = typeof SupportedNetwork[keyof typeof SupportedNetwork];
+
+
+/**
  * 
  * @export
  * @interface WorkspaceCreateRequest
@@ -400,10 +416,10 @@ export interface WorkspaceCreateRequest {
     'creatorId': string;
     /**
      * 
-     * @type {Array<string>}
+     * @type {Array<SupportedNetwork>}
      * @memberof WorkspaceCreateRequest
      */
-    'supportedNetworks': Array<string>;
+    'supportedNetworks': Array<SupportedNetwork>;
     /**
      * 
      * @type {Array<SocialItem>}
