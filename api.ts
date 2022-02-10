@@ -27,38 +27,38 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
  * @interface GrantApplicationFieldAnswers
  */
 export interface GrantApplicationFieldAnswers {
-    [key: string]: string | any;
+    [key: string]: Array | any;
 
     /**
      * 
-     * @type {string}
+     * @type {Array<string>}
      * @memberof GrantApplicationFieldAnswers
      */
-    'applicantName': string;
+    'applicantName': Array<string>;
     /**
      * 
-     * @type {string}
+     * @type {Array<string>}
      * @memberof GrantApplicationFieldAnswers
      */
-    'applicantEmail': string;
+    'applicantEmail': Array<string>;
     /**
      * 
-     * @type {string}
+     * @type {Array<string>}
      * @memberof GrantApplicationFieldAnswers
      */
-    'projectName': string;
+    'projectName': Array<string>;
     /**
      * 
-     * @type {string}
+     * @type {Array<string>}
      * @memberof GrantApplicationFieldAnswers
      */
-    'projectDetails': string;
+    'projectDetails': Array<string>;
     /**
      * 
-     * @type {string}
+     * @type {Array<string>}
      * @memberof GrantApplicationFieldAnswers
      */
-    'fundingBreakdown': string;
+    'fundingBreakdown': Array<string>;
 }
 /**
  * 
@@ -86,29 +86,10 @@ export interface GrantApplicationRequest {
     'fields': GrantApplicationFieldAnswers;
     /**
      * 
-     * @type {Array<GrantApplicationRequestMembers>}
-     * @memberof GrantApplicationRequest
-     */
-    'members': Array<GrantApplicationRequestMembers>;
-    /**
-     * 
      * @type {Array<GrantProposedMilestone>}
      * @memberof GrantApplicationRequest
      */
     'milestones'?: Array<GrantProposedMilestone>;
-}
-/**
- * 
- * @export
- * @interface GrantApplicationRequestMembers
- */
-export interface GrantApplicationRequestMembers {
-    /**
-     * 
-     * @type {string}
-     * @memberof GrantApplicationRequestMembers
-     */
-    'details': string;
 }
 /**
  * 
@@ -244,7 +225,8 @@ export interface GrantField {
 export const GrantFieldInputTypeEnum = {
     ShortForm: 'short-form',
     LongForm: 'long-form',
-    Numeric: 'numeric'
+    Numeric: 'numeric',
+    Array: 'array'
 } as const;
 
 export type GrantFieldInputTypeEnum = typeof GrantFieldInputTypeEnum[keyof typeof GrantFieldInputTypeEnum];
