@@ -178,11 +178,11 @@ export interface GrantCreateRequest {
  */
 export interface GrantCreateRequestReward {
     /**
-     * 
-     * @type {number}
+     * Positive integer amount of currency. Is a string to allow bigint inputs
+     * @type {string}
      * @memberof GrantCreateRequestReward
      */
-    'committed': number;
+    'committed': string;
     /**
      * 
      * @type {string}
@@ -244,11 +244,11 @@ export interface GrantProposedMilestone {
      */
     'title': string;
     /**
-     * 
-     * @type {number}
+     * Positive integer amount of currency. Is a string to allow bigint inputs
+     * @type {string}
      * @memberof GrantProposedMilestone
      */
-    'amount': number;
+    'amount': string;
 }
 /**
  * 
