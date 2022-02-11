@@ -27,7 +27,7 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
  * @interface GrantApplicationFieldAnswers
  */
 export interface GrantApplicationFieldAnswers {
-    [key: string]: Array | any;
+    [key: string]: Array<string>;
 
     /**
      * 
