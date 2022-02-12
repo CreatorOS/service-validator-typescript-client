@@ -166,10 +166,10 @@ export interface GrantCreateRequest {
     'workspaceId': string;
     /**
      * 
-     * @type {Array<GrantField>}
+     * @type {GrantFieldMap}
      * @memberof GrantCreateRequest
      */
-    'fields': Array<GrantField>;
+    'fields': GrantFieldMap;
 }
 /**
  * 
@@ -196,12 +196,6 @@ export interface GrantCreateRequestReward {
  * @interface GrantField
  */
 export interface GrantField {
-    /**
-     * 
-     * @type {string}
-     * @memberof GrantField
-     */
-    'id': string;
     /**
      * Human readable title of the field
      * @type {string}
@@ -231,6 +225,45 @@ export const GrantFieldInputTypeEnum = {
 
 export type GrantFieldInputTypeEnum = typeof GrantFieldInputTypeEnum[keyof typeof GrantFieldInputTypeEnum];
 
+/**
+ * 
+ * @export
+ * @interface GrantFieldMap
+ */
+export interface GrantFieldMap {
+    [key: string]: GrantField | any;
+
+    /**
+     * 
+     * @type {GrantField}
+     * @memberof GrantFieldMap
+     */
+    'applicantName': GrantField;
+    /**
+     * 
+     * @type {GrantField}
+     * @memberof GrantFieldMap
+     */
+    'applicantEmail': GrantField;
+    /**
+     * 
+     * @type {GrantField}
+     * @memberof GrantFieldMap
+     */
+    'projectName': GrantField;
+    /**
+     * 
+     * @type {GrantField}
+     * @memberof GrantFieldMap
+     */
+    'projectDetails': GrantField;
+    /**
+     * 
+     * @type {GrantField}
+     * @memberof GrantFieldMap
+     */
+    'fundingBreakdown': GrantField;
+}
 /**
  * 
  * @export
