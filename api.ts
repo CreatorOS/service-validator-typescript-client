@@ -303,10 +303,10 @@ export interface GrantUpdateRequest {
     'deadline'?: string;
     /**
      * 
-     * @type {Array<GrantField>}
+     * @type {GrantFieldMap}
      * @memberof GrantUpdateRequest
      */
-    'fields'?: Array<GrantField>;
+    'fields'?: GrantFieldMap;
 }
 /**
  * 
