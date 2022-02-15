@@ -99,10 +99,10 @@ export interface GrantApplicationRequest {
 export interface GrantApplicationUpdate {
     /**
      * 
-     * @type {string}
+     * @type {GrantApplicationFieldAnswers}
      * @memberof GrantApplicationUpdate
      */
-    'details'?: string;
+    'fields'?: GrantApplicationFieldAnswers;
     /**
      * 
      * @type {Array<GrantProposedMilestone>}
