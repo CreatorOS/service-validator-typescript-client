@@ -148,10 +148,10 @@ export interface GrantCreateRequest {
     'deadline'?: string;
     /**
      * 
-     * @type {GrantCreateRequestReward}
+     * @type {GrantReward}
      * @memberof GrantCreateRequest
      */
-    'reward': GrantCreateRequestReward;
+    'reward': GrantReward;
     /**
      * 
      * @type {string}
@@ -170,25 +170,6 @@ export interface GrantCreateRequest {
      * @memberof GrantCreateRequest
      */
     'fields': GrantFieldMap;
-}
-/**
- * 
- * @export
- * @interface GrantCreateRequestReward
- */
-export interface GrantCreateRequestReward {
-    /**
-     * Positive integer amount of currency. Is a string to allow bigint inputs
-     * @type {string}
-     * @memberof GrantCreateRequestReward
-     */
-    'committed': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GrantCreateRequestReward
-     */
-    'asset': string;
 }
 /**
  * 
@@ -286,9 +267,40 @@ export interface GrantProposedMilestone {
 /**
  * 
  * @export
+ * @interface GrantReward
+ */
+export interface GrantReward {
+    /**
+     * Positive integer amount of currency. Is a string to allow bigint inputs
+     * @type {string}
+     * @memberof GrantReward
+     */
+    'committed': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GrantReward
+     */
+    'asset': string;
+}
+/**
+ * 
+ * @export
  * @interface GrantUpdateRequest
  */
 export interface GrantUpdateRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof GrantUpdateRequest
+     */
+    'title'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GrantUpdateRequest
+     */
+    'summary'?: string;
     /**
      * 
      * @type {string}
@@ -301,6 +313,12 @@ export interface GrantUpdateRequest {
      * @memberof GrantUpdateRequest
      */
     'deadline'?: string;
+    /**
+     * 
+     * @type {GrantReward}
+     * @memberof GrantUpdateRequest
+     */
+    'reward'?: GrantReward;
     /**
      * 
      * @type {GrantFieldMap}
