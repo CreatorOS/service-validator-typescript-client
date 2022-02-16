@@ -22,6 +22,19 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from './base';
 
 /**
+ * 
+ * @export
+ * @interface ApplicationMilestoneUpdate
+ */
+export interface ApplicationMilestoneUpdate {
+    /**
+     * 
+     * @type {string}
+     * @memberof ApplicationMilestoneUpdate
+     */
+    'text': string;
+}
+/**
  * Maps ID of the field to the answer by the applicant
  * @export
  * @interface GrantApplicationFieldAnswers
@@ -506,6 +519,40 @@ export const ValidationApiAxiosParamCreator = function (configuration?: Configur
     return {
         /**
          * 
+         * @summary Validate, upload & pin grant application milestone to IPFS
+         * @param {ApplicationMilestoneUpdate} [applicationMilestoneUpdate] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        validateApplicationMilestoneUpdate: async (applicationMilestoneUpdate?: ApplicationMilestoneUpdate, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/validate/application-milestone-update`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(applicationMilestoneUpdate, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Validate, upload & pin grant application data to IPFS
          * @param {GrantApplicationRequest} [grantApplicationRequest] 
          * @param {*} [options] Override http request option.
@@ -720,6 +767,17 @@ export const ValidationApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @summary Validate, upload & pin grant application milestone to IPFS
+         * @param {ApplicationMilestoneUpdate} [applicationMilestoneUpdate] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async validateApplicationMilestoneUpdate(applicationMilestoneUpdate?: ApplicationMilestoneUpdate, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.validateApplicationMilestoneUpdate(applicationMilestoneUpdate, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary Validate, upload & pin grant application data to IPFS
          * @param {GrantApplicationRequest} [grantApplicationRequest] 
          * @param {*} [options] Override http request option.
@@ -796,6 +854,16 @@ export const ValidationApiFactory = function (configuration?: Configuration, bas
     return {
         /**
          * 
+         * @summary Validate, upload & pin grant application milestone to IPFS
+         * @param {ApplicationMilestoneUpdate} [applicationMilestoneUpdate] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        validateApplicationMilestoneUpdate(applicationMilestoneUpdate?: ApplicationMilestoneUpdate, options?: any): AxiosPromise<InlineResponse200> {
+            return localVarFp.validateApplicationMilestoneUpdate(applicationMilestoneUpdate, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Validate, upload & pin grant application data to IPFS
          * @param {GrantApplicationRequest} [grantApplicationRequest] 
          * @param {*} [options] Override http request option.
@@ -864,6 +932,18 @@ export const ValidationApiFactory = function (configuration?: Configuration, bas
  * @extends {BaseAPI}
  */
 export class ValidationApi extends BaseAPI {
+    /**
+     * 
+     * @summary Validate, upload & pin grant application milestone to IPFS
+     * @param {ApplicationMilestoneUpdate} [applicationMilestoneUpdate] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ValidationApi
+     */
+    public validateApplicationMilestoneUpdate(applicationMilestoneUpdate?: ApplicationMilestoneUpdate, options?: AxiosRequestConfig) {
+        return ValidationApiFp(this.configuration).validateApplicationMilestoneUpdate(applicationMilestoneUpdate, options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * 
      * @summary Validate, upload & pin grant application data to IPFS
