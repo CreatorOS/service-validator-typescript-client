@@ -418,7 +418,9 @@ export const SupportedNetwork = {
     _1: '1',
     _4: '4',
     _137: '137',
-    _80001: '80001'
+    _80001: '80001',
+    _1666700000: '1666700000',
+    _1666600000: '1666600000'
 } as const;
 
 export type SupportedNetwork = typeof SupportedNetwork[keyof typeof SupportedNetwork];
