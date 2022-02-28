@@ -102,7 +102,7 @@ export interface GrantApplicationRequest {
      * @type {Array<GrantProposedMilestone>}
      * @memberof GrantApplicationRequest
      */
-    'milestones'?: Array<GrantProposedMilestone>;
+    'milestones': Array<GrantProposedMilestone>;
 }
 /**
  * 
@@ -272,10 +272,10 @@ export interface GrantProposedMilestone {
     'title': string;
     /**
      * Positive integer amount of currency. Is a string to allow bigint inputs
-     * @type {string}
+     * @type {number}
      * @memberof GrantProposedMilestone
      */
-    'amount': string;
+    'amount': number;
 }
 /**
  * 
@@ -285,10 +285,10 @@ export interface GrantProposedMilestone {
 export interface GrantReward {
     /**
      * Positive integer amount of currency. Is a string to allow bigint inputs
-     * @type {string}
+     * @type {number}
      * @memberof GrantReward
      */
-    'committed': string;
+    'committed': number;
     /**
      * 
      * @type {string}
