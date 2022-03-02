@@ -288,7 +288,7 @@ export interface GrantReward {
      * @type {number}
      * @memberof GrantReward
      */
-    'committed': number;
+    'committed': string;
     /**
      * 
      * @type {string}
