@@ -99,10 +99,10 @@ export interface GrantApplicationRequest {
     'fields': GrantApplicationFieldAnswers;
     /**
      * 
-     * @type {Array<GrantProposedMilestone>}
+     * @type {Set<GrantProposedMilestone>}
      * @memberof GrantApplicationRequest
      */
-    'milestones': Array<GrantProposedMilestone>;
+    'milestones': Set<GrantProposedMilestone>;
 }
 /**
  * 
@@ -118,10 +118,10 @@ export interface GrantApplicationUpdate {
     'fields'?: GrantApplicationFieldAnswers;
     /**
      * 
-     * @type {Array<GrantProposedMilestone>}
+     * @type {Set<GrantProposedMilestone>}
      * @memberof GrantApplicationUpdate
      */
-    'milestones'?: Array<GrantProposedMilestone>;
+    'milestones'?: Set<GrantProposedMilestone>;
     /**
      * 
      * @type {string}
@@ -204,10 +204,10 @@ export interface GrantField {
     'inputType': GrantFieldInputTypeEnum;
     /**
      * Constraint possible inputs for this field
-     * @type {Array<string>}
+     * @type {Set<string>}
      * @memberof GrantField
      */
-    'enum'?: Array<string>;
+    'enum'?: Set<string>;
 }
 
 export const GrantFieldInputTypeEnum = {
@@ -464,16 +464,16 @@ export interface WorkspaceCreateRequest {
     'creatorId': string;
     /**
      * 
-     * @type {Array<SupportedNetwork>}
+     * @type {Set<SupportedNetwork>}
      * @memberof WorkspaceCreateRequest
      */
-    'supportedNetworks': Array<SupportedNetwork>;
+    'supportedNetworks': Set<SupportedNetwork>;
     /**
      * 
-     * @type {Array<SocialItem>}
+     * @type {Set<SocialItem>}
      * @memberof WorkspaceCreateRequest
      */
-    'socials': Array<SocialItem>;
+    'socials': Set<SocialItem>;
 }
 /**
  * 
@@ -507,10 +507,10 @@ export interface WorkspaceUpdateRequest {
     'coverImageIpfsHash'?: string;
     /**
      * 
-     * @type {Array<SocialItem>}
+     * @type {Set<SocialItem>}
      * @memberof WorkspaceUpdateRequest
      */
-    'socials'?: Array<SocialItem>;
+    'socials'?: Set<SocialItem>;
 }
 
 /**
