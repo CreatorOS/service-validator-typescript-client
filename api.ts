@@ -59,7 +59,7 @@ export interface GrantApplicationFieldAnswerItem {
  * @interface GrantApplicationFieldAnswers
  */
 export interface GrantApplicationFieldAnswers {
-    [key: string]: Array<string>;
+    [key: string]: Array<GrantApplicationFieldAnswerItem>;
 
     /**
      * 
