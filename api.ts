@@ -300,7 +300,7 @@ export interface GrantProposedMilestone {
      * @type {number}
      * @memberof GrantProposedMilestone
      */
-    'amount': number;
+    'amount': string;
 }
 /**
  * 
