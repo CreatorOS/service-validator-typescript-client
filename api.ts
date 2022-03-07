@@ -202,6 +202,12 @@ export interface GrantCreateRequest {
      * @memberof GrantCreateRequest
      */
     'fields': GrantFieldMap;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof GrantCreateRequest
+     */
+    'grantManagers'?: Array<string>;
 }
 /**
  * 
@@ -363,6 +369,12 @@ export interface GrantUpdateRequest {
      * @memberof GrantUpdateRequest
      */
     'fields'?: GrantFieldMap;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof GrantUpdateRequest
+     */
+    'grantManagers'?: Array<string>;
 }
 /**
  * 
