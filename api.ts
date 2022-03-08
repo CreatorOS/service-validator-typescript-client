@@ -429,25 +429,6 @@ export interface ModelError {
 /**
  * 
  * @export
- * @interface PublicKeyMap
- */
-export interface PublicKeyMap {
-    /**
-     * The public encryption key associated with the account address
-     * @type {string}
-     * @memberof PublicKeyMap
-     */
-    'publicKey'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof PublicKeyMap
-     */
-    'address'?: string;
-}
-/**
- * 
- * @export
  * @interface SocialItem
  */
 export interface SocialItem {
@@ -545,10 +526,16 @@ export interface WorkspaceCreateRequest {
 export interface WorkspacePublicKeysUpdateRequest {
     /**
      * 
-     * @type {Array<PublicKeyMap>}
+     * @type {string}
      * @memberof WorkspacePublicKeysUpdateRequest
      */
-    'publicKeys'?: Array<PublicKeyMap>;
+    'walletId'?: string;
+    /**
+     * The public encryption key associated with the account address
+     * @type {string}
+     * @memberof WorkspacePublicKeysUpdateRequest
+     */
+    'publicKey': string;
 }
 /**
  * 
