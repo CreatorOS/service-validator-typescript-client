@@ -519,6 +519,12 @@ export interface WorkspaceCreateRequest {
      */
     'creatorId': string;
     /**
+     * The public encryption key associated with the account address
+     * @type {string}
+     * @memberof WorkspaceCreateRequest
+     */
+    'creatorPublicKey'?: string;
+    /**
      * 
      * @type {Array<SupportedNetwork>}
      * @memberof WorkspaceCreateRequest
@@ -530,12 +536,6 @@ export interface WorkspaceCreateRequest {
      * @memberof WorkspaceCreateRequest
      */
     'socials': Array<SocialItem>;
-    /**
-     * 
-     * @type {Array<PublicKeyMap>}
-     * @memberof WorkspaceCreateRequest
-     */
-    'publicKeys'?: Array<PublicKeyMap>;
 }
 /**
  * 
