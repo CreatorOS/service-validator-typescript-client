@@ -46,12 +46,6 @@ export interface GrantApplicationFieldAnswerItem {
      * @memberof GrantApplicationFieldAnswerItem
      */
     'value': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GrantApplicationFieldAnswerItem
-     */
-    'address'?: string;
 }
 /**
  * Maps ID of the field to the answer by the applicant
@@ -62,35 +56,11 @@ export interface GrantApplicationFieldAnswers {
     [key: string]: Array<GrantApplicationFieldAnswerItem>;
 
     /**
-     * 
-     * @type {Array<GrantApplicationFieldAnswerItem>}
+     * Map of encrypted information mapped by the wallet ID, whose public key was used to map the specific information
+     * @type {{ [key: string]: string; }}
      * @memberof GrantApplicationFieldAnswers
      */
-    'applicantName': Array<GrantApplicationFieldAnswerItem>;
-    /**
-     * 
-     * @type {Array<GrantApplicationFieldAnswerItem>}
-     * @memberof GrantApplicationFieldAnswers
-     */
-    'applicantEmail': Array<GrantApplicationFieldAnswerItem>;
-    /**
-     * 
-     * @type {Array<GrantApplicationFieldAnswerItem>}
-     * @memberof GrantApplicationFieldAnswers
-     */
-    'projectName': Array<GrantApplicationFieldAnswerItem>;
-    /**
-     * 
-     * @type {Array<GrantApplicationFieldAnswerItem>}
-     * @memberof GrantApplicationFieldAnswers
-     */
-    'projectDetails': Array<GrantApplicationFieldAnswerItem>;
-    /**
-     * 
-     * @type {Array<GrantApplicationFieldAnswerItem>}
-     * @memberof GrantApplicationFieldAnswers
-     */
-    'fundingBreakdown': Array<GrantApplicationFieldAnswerItem>;
+    'pii'?: { [key: string]: string; };
 }
 /**
  * 
