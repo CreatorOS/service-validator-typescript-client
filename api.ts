@@ -52,8 +52,7 @@ export interface GrantApplicationFieldAnswerItem {
  * @export
  * @interface GrantApplicationFieldAnswers
  */
-export interface GrantApplicationFieldAnswers {
-    [key: string]: Array<GrantApplicationFieldAnswerItem>;
+export type GrantApplicationFieldAnswers = { [key: string]: Array<GrantApplicationFieldAnswerItem> } & {
 
     /**
      * Map of encrypted information mapped by the wallet ID, whose public key was used to map the specific information
