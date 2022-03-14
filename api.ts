@@ -48,20 +48,6 @@ export interface GrantApplicationFieldAnswerItem {
     'value': string;
 }
 /**
- * Maps ID of the field to the answer by the applicant
- * @export
- * @interface GrantApplicationFieldAnswers
- */
-export type GrantApplicationFieldAnswers = { [key: string]: Array<GrantApplicationFieldAnswerItem> } & {
-
-    /**
-     * Map of encrypted information mapped by the wallet ID, whose public key was used to map the specific information
-     * @type {{ [key: string]: string; }}
-     * @memberof GrantApplicationFieldAnswers
-     */
-    'pii'?: { [key: string]: string; };
-}
-/**
  * 
  * @export
  * @interface GrantApplicationRequest
@@ -80,11 +66,17 @@ export interface GrantApplicationRequest {
      */
     'applicantId': string;
     /**
-     * 
-     * @type {GrantApplicationFieldAnswers}
+     * Maps ID of the field to the answer by the applicant
+     * @type {{ [key: string]: Array<GrantApplicationFieldAnswerItem>; }}
      * @memberof GrantApplicationRequest
      */
-    'fields': GrantApplicationFieldAnswers;
+    'fields': { [key: string]: Array<GrantApplicationFieldAnswerItem>; };
+    /**
+     * Map of encrypted information mapped by the wallet ID, whose public key was used to map the specific information
+     * @type {{ [key: string]: string; }}
+     * @memberof GrantApplicationRequest
+     */
+    'pii'?: { [key: string]: string; };
     /**
      * 
      * @type {Array<GrantProposedMilestone>}
@@ -99,11 +91,17 @@ export interface GrantApplicationRequest {
  */
 export interface GrantApplicationUpdate {
     /**
-     * 
-     * @type {GrantApplicationFieldAnswers}
+     * Maps ID of the field to the answer by the applicant
+     * @type {{ [key: string]: Array<GrantApplicationFieldAnswerItem>; }}
      * @memberof GrantApplicationUpdate
      */
-    'fields'?: GrantApplicationFieldAnswers;
+    'fields'?: { [key: string]: Array<GrantApplicationFieldAnswerItem>; };
+    /**
+     * Map of encrypted information mapped by the wallet ID, whose public key was used to map the specific information
+     * @type {{ [key: string]: string; }}
+     * @memberof GrantApplicationUpdate
+     */
+    'pii'?: { [key: string]: string; };
     /**
      * 
      * @type {Array<GrantProposedMilestone>}
