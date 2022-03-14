@@ -488,25 +488,6 @@ export interface WorkspaceCreateRequest {
 /**
  * 
  * @export
- * @interface WorkspacePublicKeysUpdateRequest
- */
-export interface WorkspacePublicKeysUpdateRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof WorkspacePublicKeysUpdateRequest
-     */
-    'walletId'?: string;
-    /**
-     * The public encryption key associated with the account address
-     * @type {string}
-     * @memberof WorkspacePublicKeysUpdateRequest
-     */
-    'publicKey': string;
-}
-/**
- * 
- * @export
  * @interface WorkspaceUpdateRequest
  */
 export interface WorkspaceUpdateRequest {
@@ -540,6 +521,12 @@ export interface WorkspaceUpdateRequest {
      * @memberof WorkspaceUpdateRequest
      */
     'socials'?: Array<SocialItem>;
+    /**
+     * The public encryption key associated with the account address
+     * @type {string}
+     * @memberof WorkspaceUpdateRequest
+     */
+    'publicKey'?: string;
 }
 
 /**
@@ -754,40 +741,6 @@ export const ValidationApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @summary Validate, upload & pin workspace publicKeys patch data to IPFS
-         * @param {WorkspacePublicKeysUpdateRequest} [workspacePublicKeysUpdateRequest] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        validateWorkspacePublicKeysUpdate: async (workspacePublicKeysUpdateRequest?: WorkspacePublicKeysUpdateRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/validate/workspace-public-keys-update`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(workspacePublicKeysUpdateRequest, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
          * @summary Validate, upload & pin workspace patch data to IPFS
          * @param {WorkspaceUpdateRequest} [workspaceUpdateRequest] 
          * @param {*} [options] Override http request option.
@@ -898,17 +851,6 @@ export const ValidationApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Validate, upload & pin workspace publicKeys patch data to IPFS
-         * @param {WorkspacePublicKeysUpdateRequest} [workspacePublicKeysUpdateRequest] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async validateWorkspacePublicKeysUpdate(workspacePublicKeysUpdateRequest?: WorkspacePublicKeysUpdateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.validateWorkspacePublicKeysUpdate(workspacePublicKeysUpdateRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
          * @summary Validate, upload & pin workspace patch data to IPFS
          * @param {WorkspaceUpdateRequest} [workspaceUpdateRequest] 
          * @param {*} [options] Override http request option.
@@ -987,16 +929,6 @@ export const ValidationApiFactory = function (configuration?: Configuration, bas
          */
         validateWorkspaceCreate(workspaceCreateRequest?: WorkspaceCreateRequest, options?: any): AxiosPromise<InlineResponse200> {
             return localVarFp.validateWorkspaceCreate(workspaceCreateRequest, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Validate, upload & pin workspace publicKeys patch data to IPFS
-         * @param {WorkspacePublicKeysUpdateRequest} [workspacePublicKeysUpdateRequest] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        validateWorkspacePublicKeysUpdate(workspacePublicKeysUpdateRequest?: WorkspacePublicKeysUpdateRequest, options?: any): AxiosPromise<InlineResponse200> {
-            return localVarFp.validateWorkspacePublicKeysUpdate(workspacePublicKeysUpdateRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1088,18 +1020,6 @@ export class ValidationApi extends BaseAPI {
      */
     public validateWorkspaceCreate(workspaceCreateRequest?: WorkspaceCreateRequest, options?: AxiosRequestConfig) {
         return ValidationApiFp(this.configuration).validateWorkspaceCreate(workspaceCreateRequest, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Validate, upload & pin workspace publicKeys patch data to IPFS
-     * @param {WorkspacePublicKeysUpdateRequest} [workspacePublicKeysUpdateRequest] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ValidationApi
-     */
-    public validateWorkspacePublicKeysUpdate(workspacePublicKeysUpdateRequest?: WorkspacePublicKeysUpdateRequest, options?: AxiosRequestConfig) {
-        return ValidationApiFp(this.configuration).validateWorkspacePublicKeysUpdate(workspacePublicKeysUpdateRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
