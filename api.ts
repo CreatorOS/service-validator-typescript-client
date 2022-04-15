@@ -175,6 +175,12 @@ export interface GrantCreateRequest {
      * @memberof GrantCreateRequest
      */
     'grantManagers'?: Array<string>;
+    /**
+     * Map of evaluation rubric ID to rubric data
+     * @type {{ [key: string]: RubricItem; }}
+     * @memberof GrantCreateRequest
+     */
+    'rubric'?: { [key: string]: RubricItem; };
 }
 /**
  * 
@@ -342,6 +348,12 @@ export interface GrantUpdateRequest {
      * @memberof GrantUpdateRequest
      */
     'grantManagers'?: Array<string>;
+    /**
+     * Map of evaluation rubric ID to rubric data
+     * @type {{ [key: string]: RubricItem; }}
+     * @memberof GrantUpdateRequest
+     */
+    'rubric'?: { [key: string]: RubricItem; };
 }
 /**
  * 
@@ -392,6 +404,63 @@ export interface ModelError {
      * @memberof ModelError
      */
     'data'?: object;
+}
+/**
+ * 
+ * @export
+ * @interface ReviewItem
+ */
+export interface ReviewItem {
+    /**
+     * 
+     * @type {number}
+     * @memberof ReviewItem
+     */
+    'rating': number;
+    /**
+     * Content or IPFS hash of the review note
+     * @type {string}
+     * @memberof ReviewItem
+     */
+    'note'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface ReviewSetRequest
+ */
+export interface ReviewSetRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof ReviewSetRequest
+     */
+    'reviewer'?: string;
+    /**
+     * Encrypted review data. Map of the grant manager address => IPFS hash of the review encrypted with their public key
+     * @type {{ [key: string]: string; }}
+     * @memberof ReviewSetRequest
+     */
+    'encryptedReview'?: { [key: string]: string; };
+}
+/**
+ * 
+ * @export
+ * @interface RubricItem
+ */
+export interface RubricItem {
+    /**
+     * 
+     * @type {string}
+     * @memberof RubricItem
+     */
+    'title': string;
+    /**
+     * Details about the evaluatation rubric
+     * @type {string}
+     * @memberof RubricItem
+     */
+    'details'?: string;
 }
 /**
  * 
@@ -707,6 +776,40 @@ export const ValidationApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
+         * @summary Set the review for an application
+         * @param {ReviewSetRequest} [reviewSetRequest] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        validateReviewSet: async (reviewSetRequest?: ReviewSetRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/validate/review-set`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(reviewSetRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Validate, upload & pin workspace data to IPFS
          * @param {WorkspaceCreateRequest} [workspaceCreateRequest] 
          * @param {*} [options] Override http request option.
@@ -840,6 +943,17 @@ export const ValidationApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Set the review for an application
+         * @param {ReviewSetRequest} [reviewSetRequest] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async validateReviewSet(reviewSetRequest?: ReviewSetRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.validateReviewSet(reviewSetRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary Validate, upload & pin workspace data to IPFS
          * @param {WorkspaceCreateRequest} [workspaceCreateRequest] 
          * @param {*} [options] Override http request option.
@@ -919,6 +1033,16 @@ export const ValidationApiFactory = function (configuration?: Configuration, bas
          */
         validateGrantUpdate(grantUpdateRequest?: GrantUpdateRequest, options?: any): AxiosPromise<InlineResponse200> {
             return localVarFp.validateGrantUpdate(grantUpdateRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Set the review for an application
+         * @param {ReviewSetRequest} [reviewSetRequest] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        validateReviewSet(reviewSetRequest?: ReviewSetRequest, options?: any): AxiosPromise<InlineResponse200> {
+            return localVarFp.validateReviewSet(reviewSetRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1008,6 +1132,18 @@ export class ValidationApi extends BaseAPI {
      */
     public validateGrantUpdate(grantUpdateRequest?: GrantUpdateRequest, options?: AxiosRequestConfig) {
         return ValidationApiFp(this.configuration).validateGrantUpdate(grantUpdateRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Set the review for an application
+     * @param {ReviewSetRequest} [reviewSetRequest] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ValidationApi
+     */
+    public validateReviewSet(reviewSetRequest?: ReviewSetRequest, options?: AxiosRequestConfig) {
+        return ValidationApiFp(this.configuration).validateReviewSet(reviewSetRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
