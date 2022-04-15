@@ -435,13 +435,13 @@ export interface ReviewSetRequest {
      * @type {string}
      * @memberof ReviewSetRequest
      */
-    'reviewer'?: string;
+    'reviewer': string;
     /**
      * Encrypted review data. Map of the grant manager address => IPFS hash of the review encrypted with their public key
      * @type {{ [key: string]: string; }}
      * @memberof ReviewSetRequest
      */
-    'encryptedReview'?: { [key: string]: string; };
+    'encryptedReview': { [key: string]: string; };
 }
 /**
  * 
