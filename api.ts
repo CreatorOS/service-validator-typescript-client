@@ -175,12 +175,6 @@ export interface GrantCreateRequest {
      * @memberof GrantCreateRequest
      */
     'grantManagers'?: Array<string>;
-    /**
-     * Map of evaluation rubric ID to rubric data
-     * @type {{ [key: string]: RubricItem; }}
-     * @memberof GrantCreateRequest
-     */
-    'rubric'?: { [key: string]: RubricItem; };
 }
 /**
  * 
@@ -348,12 +342,6 @@ export interface GrantUpdateRequest {
      * @memberof GrantUpdateRequest
      */
     'grantManagers'?: Array<string>;
-    /**
-     * Map of evaluation rubric ID to rubric data
-     * @type {{ [key: string]: RubricItem; }}
-     * @memberof GrantUpdateRequest
-     */
-    'rubric'?: { [key: string]: RubricItem; };
 }
 /**
  * 
@@ -461,6 +449,19 @@ export interface RubricItem {
      * @memberof RubricItem
      */
     'details'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface RubricSetRequest
+ */
+export interface RubricSetRequest {
+    /**
+     * Map of evaluation rubric ID to rubric data
+     * @type {{ [key: string]: RubricItem; }}
+     * @memberof RubricSetRequest
+     */
+    'rubric': { [key: string]: RubricItem; };
 }
 /**
  * 
@@ -810,6 +811,40 @@ export const ValidationApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
+         * @summary Set the rubric for a grant
+         * @param {RubricSetRequest} [rubricSetRequest] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        validateRubricSet: async (rubricSetRequest?: RubricSetRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/validate/rubric-set`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(rubricSetRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Validate, upload & pin workspace data to IPFS
          * @param {WorkspaceCreateRequest} [workspaceCreateRequest] 
          * @param {*} [options] Override http request option.
@@ -954,6 +989,17 @@ export const ValidationApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Set the rubric for a grant
+         * @param {RubricSetRequest} [rubricSetRequest] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async validateRubricSet(rubricSetRequest?: RubricSetRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.validateRubricSet(rubricSetRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary Validate, upload & pin workspace data to IPFS
          * @param {WorkspaceCreateRequest} [workspaceCreateRequest] 
          * @param {*} [options] Override http request option.
@@ -1043,6 +1089,16 @@ export const ValidationApiFactory = function (configuration?: Configuration, bas
          */
         validateReviewSet(reviewSetRequest?: ReviewSetRequest, options?: any): AxiosPromise<InlineResponse200> {
             return localVarFp.validateReviewSet(reviewSetRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Set the rubric for a grant
+         * @param {RubricSetRequest} [rubricSetRequest] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        validateRubricSet(rubricSetRequest?: RubricSetRequest, options?: any): AxiosPromise<InlineResponse200> {
+            return localVarFp.validateRubricSet(rubricSetRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1144,6 +1200,18 @@ export class ValidationApi extends BaseAPI {
      */
     public validateReviewSet(reviewSetRequest?: ReviewSetRequest, options?: AxiosRequestConfig) {
         return ValidationApiFp(this.configuration).validateReviewSet(reviewSetRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Set the rubric for a grant
+     * @param {RubricSetRequest} [rubricSetRequest] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ValidationApi
+     */
+    public validateRubricSet(rubricSetRequest?: RubricSetRequest, options?: AxiosRequestConfig) {
+        return ValidationApiFp(this.configuration).validateRubricSet(rubricSetRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
