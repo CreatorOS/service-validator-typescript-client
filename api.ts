@@ -490,6 +490,7 @@ export interface SocialItem {
 
 export const SupportedNetwork = {
     _1: '1',
+    _10: '10',
     _4: '4',
     _137: '137',
     _80001: '80001',
