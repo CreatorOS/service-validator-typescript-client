@@ -396,6 +396,31 @@ export interface ModelError {
 /**
  * 
  * @export
+ * @interface Review
+ */
+export interface Review {
+    /**
+     * Does the reviewer approve of the application
+     * @type {boolean}
+     * @memberof Review
+     */
+    'isApproved': boolean;
+    /**
+     * General comment about the application
+     * @type {string}
+     * @memberof Review
+     */
+    'comment'?: string;
+    /**
+     * 
+     * @type {{ [key: string]: ReviewItem; }}
+     * @memberof Review
+     */
+    'evaluation': { [key: string]: ReviewItem; };
+}
+/**
+ * 
+ * @export
  * @interface ReviewItem
  */
 export interface ReviewItem {
@@ -432,6 +457,25 @@ export interface ReviewSetRequest {
     'encryptedReview': { [key: string]: string; };
 }
 /**
+ * Map of evaluation rubric ID to rubric data
+ * @export
+ * @interface Rubric
+ */
+export interface Rubric {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Rubric
+     */
+    'isPrivate': boolean;
+    /**
+     * 
+     * @type {{ [key: string]: RubricItem; }}
+     * @memberof Rubric
+     */
+    'rubric': { [key: string]: RubricItem; };
+}
+/**
  * 
  * @export
  * @interface RubricItem
@@ -449,6 +493,12 @@ export interface RubricItem {
      * @memberof RubricItem
      */
     'details'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof RubricItem
+     */
+    'maximumPoints': number;
 }
 /**
  * 
@@ -457,11 +507,11 @@ export interface RubricItem {
  */
 export interface RubricSetRequest {
     /**
-     * Map of evaluation rubric ID to rubric data
-     * @type {{ [key: string]: RubricItem; }}
+     * 
+     * @type {Rubric}
      * @memberof RubricSetRequest
      */
-    'rubric': { [key: string]: RubricItem; };
+    'rubric': Rubric;
 }
 /**
  * 
