@@ -560,6 +560,37 @@ export type SupportedNetwork = typeof SupportedNetwork[keyof typeof SupportedNet
 /**
  * 
  * @export
+ * @interface Token
+ */
+export interface Token {
+    /**
+     * Token Symbol to be displayed
+     * @type {string}
+     * @memberof Token
+     */
+    'label': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Token
+     */
+    'address': string;
+    /**
+     * Decimal for token
+     * @type {number}
+     * @memberof Token
+     */
+    'decimal': number;
+    /**
+     * IPFS hash of token icon
+     * @type {string}
+     * @memberof Token
+     */
+    'iconHash': string;
+}
+/**
+ * 
+ * @export
  * @interface WorkspaceCreateRequest
  */
 export interface WorkspaceCreateRequest {
@@ -654,6 +685,12 @@ export interface WorkspaceUpdateRequest {
      * @memberof WorkspaceUpdateRequest
      */
     'publicKey'?: string;
+    /**
+     * 
+     * @type {Array<Token>}
+     * @memberof WorkspaceUpdateRequest
+     */
+    'tokens'?: Array<Token>;
 }
 
 /**
