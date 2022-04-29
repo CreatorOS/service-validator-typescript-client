@@ -293,6 +293,12 @@ export interface GrantReward {
      * @memberof GrantReward
      */
     'asset': string;
+    /**
+     * 
+     * @type {Token}
+     * @memberof GrantReward
+     */
+    'token'?: Token;
 }
 /**
  * 
