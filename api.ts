@@ -586,7 +586,7 @@ export interface Token {
      * @type {number}
      * @memberof Token
      */
-    'decimal': number;
+    'decimal': string;
     /**
      * IPFS hash of token icon
      * @type {string}
