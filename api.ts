@@ -352,25 +352,6 @@ export interface GrantUpdateRequest {
 /**
  * 
  * @export
- * @interface InlineResponse200
- */
-export interface InlineResponse200 {
-    /**
-     * IPFS hash of the uploaded grant
-     * @type {string}
-     * @memberof InlineResponse200
-     */
-    'ipfsHash': string;
-    /**
-     * http url that can be used to fetch the uploaded grant file
-     * @type {string}
-     * @memberof InlineResponse200
-     */
-    'url': string;
-}
-/**
- * 
- * @export
  * @interface ModelError
  */
 export interface ModelError {
@@ -558,6 +539,8 @@ export const SupportedNetwork = {
     _80001: '80001',
     _245022926: '245022926',
     _245022934: '245022934',
+    _44787: '44787',
+    _42220: '42220',
     _1666700000: '1666700000',
     _1666600000: '1666600000'
 } as const;
@@ -595,6 +578,25 @@ export interface Token {
      * @memberof Token
      */
     'iconHash': string;
+}
+/**
+ * 
+ * @export
+ * @interface ValidateGrantCreate200Response
+ */
+export interface ValidateGrantCreate200Response {
+    /**
+     * IPFS hash of the uploaded grant
+     * @type {string}
+     * @memberof ValidateGrantCreate200Response
+     */
+    'ipfsHash': string;
+    /**
+     * http url that can be used to fetch the uploaded grant file
+     * @type {string}
+     * @memberof ValidateGrantCreate200Response
+     */
+    'url': string;
 }
 /**
  * 
@@ -1030,7 +1032,7 @@ export const ValidationApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async validateApplicationMilestoneUpdate(applicationMilestoneUpdate?: ApplicationMilestoneUpdate, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200>> {
+        async validateApplicationMilestoneUpdate(applicationMilestoneUpdate?: ApplicationMilestoneUpdate, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ValidateGrantCreate200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.validateApplicationMilestoneUpdate(applicationMilestoneUpdate, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1041,7 +1043,7 @@ export const ValidationApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async validateGrantApplicationCreate(grantApplicationRequest?: GrantApplicationRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200>> {
+        async validateGrantApplicationCreate(grantApplicationRequest?: GrantApplicationRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ValidateGrantCreate200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.validateGrantApplicationCreate(grantApplicationRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1052,7 +1054,7 @@ export const ValidationApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async validateGrantApplicationUpdate(grantApplicationUpdate?: GrantApplicationUpdate, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200>> {
+        async validateGrantApplicationUpdate(grantApplicationUpdate?: GrantApplicationUpdate, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ValidateGrantCreate200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.validateGrantApplicationUpdate(grantApplicationUpdate, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1063,7 +1065,7 @@ export const ValidationApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async validateGrantCreate(grantCreateRequest?: GrantCreateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200>> {
+        async validateGrantCreate(grantCreateRequest?: GrantCreateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ValidateGrantCreate200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.validateGrantCreate(grantCreateRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1074,7 +1076,7 @@ export const ValidationApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async validateGrantUpdate(grantUpdateRequest?: GrantUpdateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200>> {
+        async validateGrantUpdate(grantUpdateRequest?: GrantUpdateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ValidateGrantCreate200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.validateGrantUpdate(grantUpdateRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1085,7 +1087,7 @@ export const ValidationApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async validateReviewSet(reviewSetRequest?: ReviewSetRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200>> {
+        async validateReviewSet(reviewSetRequest?: ReviewSetRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ValidateGrantCreate200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.validateReviewSet(reviewSetRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1096,7 +1098,7 @@ export const ValidationApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async validateRubricSet(rubricSetRequest?: RubricSetRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200>> {
+        async validateRubricSet(rubricSetRequest?: RubricSetRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ValidateGrantCreate200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.validateRubricSet(rubricSetRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1107,7 +1109,7 @@ export const ValidationApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async validateWorkspaceCreate(workspaceCreateRequest?: WorkspaceCreateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200>> {
+        async validateWorkspaceCreate(workspaceCreateRequest?: WorkspaceCreateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ValidateGrantCreate200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.validateWorkspaceCreate(workspaceCreateRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1118,7 +1120,7 @@ export const ValidationApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async validateWorkspaceUpdate(workspaceUpdateRequest?: WorkspaceUpdateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200>> {
+        async validateWorkspaceUpdate(workspaceUpdateRequest?: WorkspaceUpdateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ValidateGrantCreate200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.validateWorkspaceUpdate(workspaceUpdateRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1139,7 +1141,7 @@ export const ValidationApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        validateApplicationMilestoneUpdate(applicationMilestoneUpdate?: ApplicationMilestoneUpdate, options?: any): AxiosPromise<InlineResponse200> {
+        validateApplicationMilestoneUpdate(applicationMilestoneUpdate?: ApplicationMilestoneUpdate, options?: any): AxiosPromise<ValidateGrantCreate200Response> {
             return localVarFp.validateApplicationMilestoneUpdate(applicationMilestoneUpdate, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1149,7 +1151,7 @@ export const ValidationApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        validateGrantApplicationCreate(grantApplicationRequest?: GrantApplicationRequest, options?: any): AxiosPromise<InlineResponse200> {
+        validateGrantApplicationCreate(grantApplicationRequest?: GrantApplicationRequest, options?: any): AxiosPromise<ValidateGrantCreate200Response> {
             return localVarFp.validateGrantApplicationCreate(grantApplicationRequest, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1159,7 +1161,7 @@ export const ValidationApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        validateGrantApplicationUpdate(grantApplicationUpdate?: GrantApplicationUpdate, options?: any): AxiosPromise<InlineResponse200> {
+        validateGrantApplicationUpdate(grantApplicationUpdate?: GrantApplicationUpdate, options?: any): AxiosPromise<ValidateGrantCreate200Response> {
             return localVarFp.validateGrantApplicationUpdate(grantApplicationUpdate, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1169,7 +1171,7 @@ export const ValidationApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        validateGrantCreate(grantCreateRequest?: GrantCreateRequest, options?: any): AxiosPromise<InlineResponse200> {
+        validateGrantCreate(grantCreateRequest?: GrantCreateRequest, options?: any): AxiosPromise<ValidateGrantCreate200Response> {
             return localVarFp.validateGrantCreate(grantCreateRequest, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1179,7 +1181,7 @@ export const ValidationApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        validateGrantUpdate(grantUpdateRequest?: GrantUpdateRequest, options?: any): AxiosPromise<InlineResponse200> {
+        validateGrantUpdate(grantUpdateRequest?: GrantUpdateRequest, options?: any): AxiosPromise<ValidateGrantCreate200Response> {
             return localVarFp.validateGrantUpdate(grantUpdateRequest, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1189,7 +1191,7 @@ export const ValidationApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        validateReviewSet(reviewSetRequest?: ReviewSetRequest, options?: any): AxiosPromise<InlineResponse200> {
+        validateReviewSet(reviewSetRequest?: ReviewSetRequest, options?: any): AxiosPromise<ValidateGrantCreate200Response> {
             return localVarFp.validateReviewSet(reviewSetRequest, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1199,7 +1201,7 @@ export const ValidationApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        validateRubricSet(rubricSetRequest?: RubricSetRequest, options?: any): AxiosPromise<InlineResponse200> {
+        validateRubricSet(rubricSetRequest?: RubricSetRequest, options?: any): AxiosPromise<ValidateGrantCreate200Response> {
             return localVarFp.validateRubricSet(rubricSetRequest, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1209,7 +1211,7 @@ export const ValidationApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        validateWorkspaceCreate(workspaceCreateRequest?: WorkspaceCreateRequest, options?: any): AxiosPromise<InlineResponse200> {
+        validateWorkspaceCreate(workspaceCreateRequest?: WorkspaceCreateRequest, options?: any): AxiosPromise<ValidateGrantCreate200Response> {
             return localVarFp.validateWorkspaceCreate(workspaceCreateRequest, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1219,7 +1221,7 @@ export const ValidationApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        validateWorkspaceUpdate(workspaceUpdateRequest?: WorkspaceUpdateRequest, options?: any): AxiosPromise<InlineResponse200> {
+        validateWorkspaceUpdate(workspaceUpdateRequest?: WorkspaceUpdateRequest, options?: any): AxiosPromise<ValidateGrantCreate200Response> {
             return localVarFp.validateWorkspaceUpdate(workspaceUpdateRequest, options).then((request) => request(axios, basePath));
         },
     };
