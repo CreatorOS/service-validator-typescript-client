@@ -532,17 +532,14 @@ export interface SocialItem {
  */
 
 export const SupportedNetwork = {
-    _1: '1',
+    _44787: '44787',
+    _1666700000: '1666700000',
+    _245022926: '245022926',
+    _69: '69',
     _10: '10',
-    _4: '4',
     _137: '137',
     _80001: '80001',
-    _245022926: '245022926',
-    _245022934: '245022934',
-    _44787: '44787',
-    _42220: '42220',
-    _1666700000: '1666700000',
-    _1666600000: '1666600000'
+    _4: '4'
 } as const;
 
 export type SupportedNetwork = typeof SupportedNetwork[keyof typeof SupportedNetwork];
