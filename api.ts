@@ -383,6 +383,37 @@ export interface ModelError {
 /**
  * 
  * @export
+ * @interface Partner
+ */
+export interface Partner {
+    /**
+     * Partner name
+     * @type {string}
+     * @memberof Partner
+     */
+    'name': string;
+    /**
+     * Partner industry
+     * @type {string}
+     * @memberof Partner
+     */
+    'industry': string;
+    /**
+     * Partner website
+     * @type {string}
+     * @memberof Partner
+     */
+    'website'?: string;
+    /**
+     * IPFS hash of partner picture
+     * @type {string}
+     * @memberof Partner
+     */
+    'partnerImageHash'?: string;
+}
+/**
+ * 
+ * @export
  * @interface Review
  */
 export interface Review {
@@ -612,7 +643,19 @@ export interface WorkspaceCreateRequest {
      * @type {string}
      * @memberof WorkspaceCreateRequest
      */
+    'bio'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof WorkspaceCreateRequest
+     */
     'about': string;
+    /**
+     * 
+     * @type {Array<Partner>}
+     * @memberof WorkspaceCreateRequest
+     */
+    'partners'?: Array<Partner>;
     /**
      * IPFS hash of the logo of the workspace
      * @type {string}
@@ -667,6 +710,12 @@ export interface WorkspaceUpdateRequest {
      * @type {string}
      * @memberof WorkspaceUpdateRequest
      */
+    'bio'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof WorkspaceUpdateRequest
+     */
     'about'?: string;
     /**
      * IPFS hash of the logo of the workspace
@@ -674,6 +723,12 @@ export interface WorkspaceUpdateRequest {
      * @memberof WorkspaceUpdateRequest
      */
     'logoIpfsHash'?: string;
+    /**
+     * 
+     * @type {Array<Partner>}
+     * @memberof WorkspaceUpdateRequest
+     */
+    'partners'?: Array<Partner>;
     /**
      * IPFS hash of the cover of the workspace
      * @type {string}
