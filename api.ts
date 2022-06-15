@@ -208,14 +208,16 @@ export interface GrantField {
     'pii'?: boolean;
 }
 
-export const GrantFieldInputTypeEnum = {
-    ShortForm: 'short-form',
-    LongForm: 'long-form',
-    Numeric: 'numeric',
-    Array: 'array'
-} as const;
-
-export type GrantFieldInputTypeEnum = typeof GrantFieldInputTypeEnum[keyof typeof GrantFieldInputTypeEnum];
+/**
+    * @export
+    * @enum {string}
+    */
+export enum GrantFieldInputTypeEnum {
+    ShortForm = 'short-form',
+    LongForm = 'long-form',
+    Numeric = 'numeric',
+    Array = 'array'
+}
 
 /**
  * 
@@ -562,19 +564,17 @@ export interface SocialItem {
  * @enum {string}
  */
 
-export const SupportedNetwork = {
-    _44787: '44787',
-    _1666600000: '1666600000',
-    _1666700000: '1666700000',
-    _245022926: '245022926',
-    _69: '69',
-    _10: '10',
-    _137: '137',
-    _80001: '80001',
-    _4: '4'
-} as const;
-
-export type SupportedNetwork = typeof SupportedNetwork[keyof typeof SupportedNetwork];
+export enum SupportedNetwork {
+    _44787 = '44787',
+    _1666600000 = '1666600000',
+    _1666700000 = '1666700000',
+    _245022926 = '245022926',
+    _69 = '69',
+    _10 = '10',
+    _137 = '137',
+    _80001 = '80001',
+    _4 = '4'
+}
 
 
 /**
