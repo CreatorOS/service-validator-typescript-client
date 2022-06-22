@@ -566,6 +566,7 @@ export interface SocialItem {
 
 export enum SupportedNetwork {
     _44787 = '44787',
+    _2153 = '2153',
     _1666600000 = '1666600000',
     _1666700000 = '1666700000',
     _8217 = '8217',
