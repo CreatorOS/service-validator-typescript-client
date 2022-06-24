@@ -256,7 +256,7 @@ export interface GrantFieldMap {
      * @type {GrantField}
      * @memberof GrantFieldMap
      */
-    'fundingBreakdown': GrantField;
+    'fundingBreakdown'?: GrantField;
 }
 /**
  * 
