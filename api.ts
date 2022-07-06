@@ -601,6 +601,12 @@ export interface Token {
      */
     'address': string;
     /**
+     * The chain the token is on, leave undefined to denote same chain
+     * @type {number}
+     * @memberof Token
+     */
+    'chainId'?: number;
+    /**
      * Decimal for token
      * @type {number}
      * @memberof Token
