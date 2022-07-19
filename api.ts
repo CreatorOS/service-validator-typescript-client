@@ -708,6 +708,25 @@ export interface WorkspaceCreateRequest {
 /**
  * 
  * @export
+ * @interface WorkspaceMemberUpdate
+ */
+export interface WorkspaceMemberUpdate {
+    /**
+     * 
+     * @type {string}
+     * @memberof WorkspaceMemberUpdate
+     */
+    'fullName'?: string;
+    /**
+     * IPFS hash of the profile picture
+     * @type {string}
+     * @memberof WorkspaceMemberUpdate
+     */
+    'profilePictureIpfsHash'?: string;
+}
+/**
+ * 
+ * @export
  * @interface WorkspaceUpdateRequest
  */
 export interface WorkspaceUpdateRequest {
@@ -1047,6 +1066,40 @@ export const ValidationApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
+         * @summary Update the details of a workspace member
+         * @param {WorkspaceMemberUpdate} [workspaceMemberUpdate] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        validateWorkspaceMemberUpdate: async (workspaceMemberUpdate?: WorkspaceMemberUpdate, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/validate/workspace-member-update`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(workspaceMemberUpdate, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Validate, upload & pin workspace patch data to IPFS
          * @param {WorkspaceUpdateRequest} [workspaceUpdateRequest] 
          * @param {*} [options] Override http request option.
@@ -1179,6 +1232,17 @@ export const ValidationApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Update the details of a workspace member
+         * @param {WorkspaceMemberUpdate} [workspaceMemberUpdate] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async validateWorkspaceMemberUpdate(workspaceMemberUpdate?: WorkspaceMemberUpdate, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ValidateGrantCreate200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.validateWorkspaceMemberUpdate(workspaceMemberUpdate, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary Validate, upload & pin workspace patch data to IPFS
          * @param {WorkspaceUpdateRequest} [workspaceUpdateRequest] 
          * @param {*} [options] Override http request option.
@@ -1277,6 +1341,16 @@ export const ValidationApiFactory = function (configuration?: Configuration, bas
          */
         validateWorkspaceCreate(workspaceCreateRequest?: WorkspaceCreateRequest, options?: any): AxiosPromise<ValidateGrantCreate200Response> {
             return localVarFp.validateWorkspaceCreate(workspaceCreateRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Update the details of a workspace member
+         * @param {WorkspaceMemberUpdate} [workspaceMemberUpdate] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        validateWorkspaceMemberUpdate(workspaceMemberUpdate?: WorkspaceMemberUpdate, options?: any): AxiosPromise<ValidateGrantCreate200Response> {
+            return localVarFp.validateWorkspaceMemberUpdate(workspaceMemberUpdate, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1392,6 +1466,18 @@ export class ValidationApi extends BaseAPI {
      */
     public validateWorkspaceCreate(workspaceCreateRequest?: WorkspaceCreateRequest, options?: AxiosRequestConfig) {
         return ValidationApiFp(this.configuration).validateWorkspaceCreate(workspaceCreateRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Update the details of a workspace member
+     * @param {WorkspaceMemberUpdate} [workspaceMemberUpdate] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ValidationApi
+     */
+    public validateWorkspaceMemberUpdate(workspaceMemberUpdate?: WorkspaceMemberUpdate, options?: AxiosRequestConfig) {
+        return ValidationApiFp(this.configuration).validateWorkspaceMemberUpdate(workspaceMemberUpdate, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
