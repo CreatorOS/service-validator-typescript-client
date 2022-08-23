@@ -170,12 +170,6 @@ export interface GrantCreateRequest {
      */
     'fields': GrantFieldMap;
     /**
-     * Will applications for this grant have reviews only visible to admins & reviewer themselves
-     * @type {boolean}
-     * @memberof GrantCreateRequest
-     */
-    'privateReviews'?: boolean;
-    /**
      * 
      * @type {Array<string>}
      * @memberof GrantCreateRequest
@@ -482,7 +476,7 @@ export interface ReviewSetRequest {
      */
     'publicReviewDataHash'?: string;
     /**
-     * Encrypted review data. Map of the grant manager\'s wallet address => IPFS hash of the review encrypted with their public key
+     * Encrypted review data. Map of the grant manager address => IPFS hash of the review encrypted with their public key
      * @type {{ [key: string]: string; }}
      * @memberof ReviewSetRequest
      */
@@ -702,7 +696,7 @@ export interface WorkspaceCreateRequest {
      */
     'creatorId': string;
     /**
-     * The public encryption key associated with the account address; hex encoded
+     * The public encryption key associated with the account address
      * @type {string}
      * @memberof WorkspaceCreateRequest
      */
@@ -788,7 +782,7 @@ export interface WorkspaceUpdateRequest {
      */
     'socials'?: Array<SocialItem>;
     /**
-     * The public encryption key associated with the account address; hex encoded
+     * The public encryption key associated with the account address
      * @type {string}
      * @memberof WorkspaceUpdateRequest
      */
