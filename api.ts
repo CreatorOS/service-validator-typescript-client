@@ -470,6 +470,12 @@ export interface ReviewSetRequest {
      */
     'reviewer': string;
     /**
+     * The public encryption key associated with the account address
+     * @type {string}
+     * @memberof ReviewSetRequest
+     */
+    'reviewerPublicKey'?: string;
+    /**
      * 
      * @type {string}
      * @memberof ReviewSetRequest
@@ -732,6 +738,12 @@ export interface WorkspaceMemberUpdate {
      * @memberof WorkspaceMemberUpdate
      */
     'profilePictureIpfsHash'?: string;
+    /**
+     * The public encryption key associated with the account address
+     * @type {string}
+     * @memberof WorkspaceMemberUpdate
+     */
+    'publicKey'?: string;
 }
 /**
  * 
