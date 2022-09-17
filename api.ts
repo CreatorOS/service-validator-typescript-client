@@ -66,6 +66,12 @@ export interface GrantApplicationRequest {
      */
     'applicantId': string;
     /**
+     * The public encryption key associated with the account address
+     * @type {string}
+     * @memberof GrantApplicationRequest
+     */
+    'applicantPublicKey'?: string;
+    /**
      * Maps ID of the field to the answer by the applicant
      * @type {{ [key: string]: Array<GrantApplicationFieldAnswerItem>; }}
      * @memberof GrantApplicationRequest
